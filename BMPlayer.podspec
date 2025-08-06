@@ -26,7 +26,7 @@ end
 
 s.subspec 'Full' do |full|
     full.source_files = 'Source/*.swift','Source/Default/*'
-    full.resource_bundles = { 'Full' => 'Source/**/*.xcassets' }
+    full.resource_bundles = { 'BMPlayer' => 'Source/**/*.xcassets' }
     full.frameworks   = 'UIKit', 'AVFoundation'
 
     full.dependency 'BMPlayer/Core'
@@ -36,11 +36,11 @@ end
 
 s.subspec 'CacheSupport' do |cache|
     cache.source_files = 'Source/*.swift','Source/CacheSupport/*'
-    cache.resource_bundles = { 'CacheSupport' => 'Source/**/*.xcassets' }
+    cache.resource_bundles = { 'BMPlayer' => 'Source/**/*.xcassets' }
     cache.frameworks   = 'UIKit', 'AVFoundation'
 
     cache.dependency 'BMPlayer/Core'
-    cache.dependency 'SnapKit', '~> 5.0.0'
+    cache.dependency 'SnapKit', '~> 5.7.1'
     cache.dependency 'NVActivityIndicatorView', '~> 4.7.0'
     cache.dependency 'VIMediaCache'
 end

@@ -761,8 +761,23 @@ open class BMPlayerControlView: UIView {
     }
     
     fileprivate func BMImageResourcePath(_ fileName: String) -> UIImage? {
-        let bundle = Bundle(for: BMPlayer.self)
-        return UIImage(named: fileName, in: bundle, compatibleWith: nil)
+        return UIImage(named: fileName, in: Bundle.current, compatibleWith: nil)
     }
 }
 
+extension Bundle {
+    
+    private class _BundleClass { }
+    
+    static let current: Bundle = {
+        let bundle = Bundle(for: _BundleClass.self)
+        guard let url = bundle.url(forResource: "BMPlayer", withExtension: "bundle"), let resource = Bundle(url: url) else {
+            return bundle
+        }
+        return resource
+    }()
+    
+    static func image(named: String) -> UIImage? {
+        return UIImage(named: named, in: current, compatibleWith: nil)
+    }
+}
